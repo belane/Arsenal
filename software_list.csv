@@ -15,7 +15,7 @@ FLAG;Name;Desc;Category;Url;Install/Unzip/Move;Exec_Params
 0x2000;GNS3;Graphical Network Simulator. It allows simulate complex networks;virtualization;https://github.com/GNS3/gns3-gui/releases/download/v1.3.13/GNS3-1.3.13-all-in-one.exe;0;/S /NCRC
 0x4000;HashCheck;HashCheck Shell Extension;utils;http://code.kliu.org/hashcheck/downloads/HashCheckInstall-latest.exe;0;/S /NCRC
 0x8000;WinPcap ;WinPcap ;network;http://www.winpcap.org/install/bin/WinPcap_4_1_3.exe;0;/S /NCRC
-0x10000;HeidiSQL;Client for MySQL, MSQL & PostgreSQL;utils;http://www.heidisql.com/installers/HeidiSQL_9.3.0.4984_Setup.exe;0;/S /NCRC
+0x10000;HeidiSQL;Client for MySQL, MSQL & PostgreSQL;utils;http://www.heidisql.com/installers/HeidiSQL_9.3.0.4984_Setup.exe;0;/sp- /silent /norestart
 0x20000;Linux Reader;Read Ext2/Ext3/Ext4, HFS and ReiserFS file systems.;utils;http://www.diskinternals.com/download/Linux_Reader.exe;0;/S /NCRC
 0x40000;Pestudio;Performs Malware Initial Assessment of any executable file;debug;https://www.winitor.com/tools/pestudio851.zip;1;pestudio
 0x80000;Nmap;Utility for network discovery and security auditing;network;https://nmap.org/dist/nmap-7.01-setup.exe;0;/S /NCRC
