@@ -1,0 +1,82 @@
+<html><head>
+<title>Arsenal GUI Selector</title>
+<script>
+var software = [
+	"0001;OllyDbg;Windows debugger;debug;http://www.ollydbg.de/odbg201.zip;1;OllyDbg",
+	"0002;Putty;SSH and telnet client;utils;http://the.earth.li/~sgtatham/putty/latest/x86/putty-0.66-installer.exe;0;/SP- /SILENT /NORESTART /GROUP=$menu_group",
+	"0004;FGDump;Tool for mass password auditing of Windows systems;passwords;http://www.foofus.net/fizzgig/fgdump/fgdump-2.1.0-exeonly.zip;1;FGDump",
+	"0008;FocaPro;Tool to find metadata and hidden information online;metadata;https://www.elevenpaths.com/downloads/FocaPro.zip;1;FocaPro",
+	"0010;Hashcat;Advanced password recovery tool;passwords;http://hashcat.net/files/hashcat-2.00.7z;2;.\Hashcat",
+	"0020;oclHashcat AMD;GPGPU advanced password recovery tool;passwords;http://hashcat.net/files/oclHashcat-2.01.7z;2;.\Hashcat",
+	"0040;oclHashcat NVidia;GPGPU advanced password recovery tool;passwords;http://hashcat.net/files/cudaHashcat-2.01.7z;2;.\Hashcat",
+	"0080;HashcatGUI;Hashcat GUI;passwords;https://hashkiller.co.uk/downloads/HashcatGUI_045.zip;1;Hashcat",
+	"0100;Sysinternals Suite;PSTools and Troubleshooting Utilities for Windows;utils;https://download.sysinternals.com/files/sysinternalssuite.zip;1;PSTools",
+	"0200;Win10Pcap;New WinPcap-based Ethernet packet capture library;network;http://www.win10pcap.org/download/Win10Pcap-v10.2-5002.msi;0;/PASSIVE /NORESTART",
+	"0400;Wireshark;Network protocol analyzer;network;https://1.eu.dl.wireshark.org/win32/Wireshark-win32-2.0.1.exe;0;/NCRC /S",
+	"0800;Cain & Abel;Password recovery tool;passwords;http://www.oxid.it/downloads/ca_setup.exe;0;/S",
+	"1000;Ophcrack;Windows password cracker based on rainbow tables;passwords;http://downloads.sourceforge.net/project/ophcrack/ophcrack/3.6.0/ophcrack-win32-installer-3.6.0.exe?r=&ts=1453409572&use_mirror=heanet&name=/ophcrack-win32-installer-3.6.0.exe;0;/S /NCRC",
+	"2000;GNS3;Graphical Network Simulator. It allows simulate complex networks;virtualization;https://github.com/GNS3/gns3-gui/releases/download/v1.3.13/GNS3-1.3.13-all-in-one.exe;0;/S /NCRC",
+	"4000;HashCheck;HashCheck Shell Extension;utils;http://code.kliu.org/hashcheck/downloads/HashCheckInstall-latest.exe;0;/S /NCRC",
+	"8000;WinPcap ;WinPcap ;network;http://www.winpcap.org/install/bin/WinPcap_4_1_3.exe;0;/S /NCRC",
+	"10000;HeidiSQL;Client for MySQL, MSQL & PostgreSQL;utils;http://www.heidisql.com/installers/HeidiSQL_9.3.0.4984_Setup.exe;0;/S /NCRC",
+	"20000;Linux Reader;Read Ext2/Ext3/Ext4, HFS and ReiserFS file systems.;utils;http://www.diskinternals.com/download/Linux_Reader.exe;0;/S /NCRC",
+	"40000;Pestudio;Performs Malware Initial Assessment of any executable file;debug;https://www.winitor.com/tools/pestudio851.zip;1;pestudio",
+	"80000;Nmap;Utility for network discovery and security auditing;network;https://nmap.org/dist/nmap-7.01-setup.exe;0;/S /NCRC",
+	"100000;VirtualBox;Desktop virtualization;virtualization;http://download.virtualbox.org/virtualbox/5.0.14/VirtualBox-5.0.14-105127-Win.exe;0;/S /NCRC",
+	"200000;VMware Player;Desktop virtualization;virtualization;https://download3.vmware.com/software/player/file/VMware-player-12.1.0-3272444.exe;0;/S /NCRC",
+	"400000;NetworkMiner;Network Forensic Analysis Tool;network;https://www.netresec.com/?download=NetworkMiner&name=/NetworkMiner_2-0.zip;1;NetworkMiner",
+	"800000;Posh-SecMod;PowerShell Module with Security cmdlets for security work;powershell;https://github.com/darkoperator/Posh-SecMod/archive/master.zip;1;Posh-SecMod",
+	"1000000;RWMC;PowerShell mimikatz;powershell;https://github.com/giMini/RWMC/archive/master.zip;1;RWMC",
+	"2000000;Mimikatz;Dump cleartext passwords;passwords;https://github.com/gentilkiwi/mimikatz/releases/download/2.1.0-alpha-20160217/mimikatz_trunk.zip;1;mimikatz",
+    ]
+
+var software_details = new Array()
+
+for	(i = 0; i < software.length; i++) {
+	var element = software[i].split(";");
+	software_details.push(element);
+	}
+//software_details.sort(function(a, b){return a[3]>b[3]});
+
+function write_form(){
+	for	(index = 0; index < software.length; index++) {
+		var element = "<li><label><input type='checkbox' name='apps' value='" + software_details[index][0] + "' id=''><b>" + software_details[index][1] + "</b> - " + software_details[index][2] + "</label> <i>(" + software_details[index][3] + ")</i></li>"
+		document.getElementById("software_list").innerHTML += element;
+	}
+}
+	
+function get_key(){
+	var software_flag = 0;
+    for (var i=0;i<document.getElementById("software_choice").elements.length;i++) {
+        if ( document.getElementById("software_choice").elements[i].checked == true ) {
+			software_flag += parseInt(document.getElementById("software_choice").elements[i].value, 16);
+        }
+    }  
+	document.getElementById("ucode").innerHTML = software_flag.toString(16);
+}	
+</script></head><body onload="write_form()">
+<h2>Arsenal</h2>
+<form id="software_choice" action="#" onsubmit="get_key()" method=post>
+
+<ul id="software_list" onClick="get_key()">
+<!-- LIST -->
+<!-- LIST END -->
+</ul>
+<p>Select the apps you want by clicking on them above.</p>
+<button type="button" onClick="get_key()">Get Installer</button>
+<p> 
+<a style="background-color:DarkBlue;color:Snow"> 
+$env:arsenal_key="<label id="ucode">0</label>";iex (New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/belane/Arsenal/master/Arsenal.ps1") </a> 
+</p>
+</form>
+<p>
+&nbsp;* copy the above line into a powershell command shell
+</p>
+<p>
+&nbsp;<img src="https://raw.githubusercontent.com/belane/Arsenal/master/runas.png"><img>
+</p>
+<p>
+&nbsp;<img src="https://raw.githubusercontent.com/belane/Arsenal/master/arsenal.png"><img>
+</p>
+</body>
+</html>
